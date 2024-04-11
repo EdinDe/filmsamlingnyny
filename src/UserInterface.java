@@ -10,9 +10,9 @@ public class UserInterface {
         int sentinel = 2;
         int tal = 0;
 
-        controller.addMovie("Batman", "John", 2010, 90, "action", true);
+        /*controller.addMovie("Batman", "John", 2010, 90, "action", true);
         controller.addMovie("spiderman", "Jens", 2011, 80, "action", true);
-        controller.addMovie("superman", "peter", 1999, 120, "action", true);
+        controller.addMovie("superman", "peter", 1999, 120, "action", true);*/
 
         System.out.println("\nVelkommen til min filmsamling");
 
@@ -32,7 +32,7 @@ public class UserInterface {
                 System.out.println("\nVi ses\n");
             } else if (tal == 3) {
                 System.out.println("\nListe af film:\n");
-                System.out.println(controller.showMovieCollection());
+                System.out.println(controller.instanceMovieCollection.showMovieCollectionSortedByTitle());
             } else if (tal == 4) {
                 searchMovie();
             } else if (tal==5) {

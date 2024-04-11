@@ -37,7 +37,7 @@ public class controller {
     public void editMovie(String name, String newName, String newDirector, String newYear, boolean newIsInColor, String newLengthInMinutes, String newGenre) {
         ArrayList<Movie> moviesToEdit = instanceMovieCollection.searchMovieTitle(name);
         if (!moviesToEdit.isEmpty()) {
-            Movie movieToEdit = moviesToEdit.getFirst();
+            Movie movieToEdit = moviesToEdit.get(0);
 
             movieToEdit.setName(newName);
             movieToEdit.setDirector(newDirector);
