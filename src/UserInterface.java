@@ -1,8 +1,13 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.io.PrintStream;
+
 public class UserInterface {
     controller film = new controller();
+
 
     Scanner scanner = new Scanner(System.in);
 
@@ -66,7 +71,20 @@ public class UserInterface {
         String genre = scanner.next();
 
         controller.addMovie(name, director, year, lengthInMinutes, genre, isInColour);
+
         System.out.println("\nFilmen blev tilføjet");
+
+
+        PrintStream output;
+        {
+            try {
+                output = new PrintStream(new File("filmliste.txt"));
+
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     private void searchMovie() {
@@ -86,7 +104,8 @@ public class UserInterface {
         }
         
     }
-    
+
+
     public void editMovie() {
         System.out.println("Hvilken film vil du redigere i?");
         String name = scanner.nextLine();
