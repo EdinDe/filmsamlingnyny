@@ -75,15 +75,7 @@ public class UserInterface {
         System.out.println("\nFilmen blev tilføjet");
 
 
-        PrintStream output;
-        {
-            try {
-                output = new PrintStream(new File("filmliste.txt"));
 
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        }
 
     }
 
