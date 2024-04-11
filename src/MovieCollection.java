@@ -4,7 +4,11 @@ import java.util.Comparator;
 
 
 public class MovieCollection {
+
+    private FileHandler filehandler = new FileHandler();
+
     private ArrayList<Movie> movieCollection;
+
 
     public MovieCollection() {
         this.movieCollection = new ArrayList<>();
@@ -12,7 +16,7 @@ public class MovieCollection {
 
     public void addMovie(String name, String director, int year, int lenghtInMinutes, String genre, boolean isInColour) {
         movieCollection.add(new Movie(name, director, year, lenghtInMinutes, genre, isInColour));
-
+        filehandler.saveMovieList(movieCollection);
     }
 
     public ArrayList<String> listOfMovieTitles() {
