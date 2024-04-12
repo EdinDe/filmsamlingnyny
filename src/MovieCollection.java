@@ -38,6 +38,7 @@ public class MovieCollection {
         String result = "";
         for (Movie movie : movieCollection) {
             result += movie.toString() + "\n\n";
+
         }
         return result.toString();
 

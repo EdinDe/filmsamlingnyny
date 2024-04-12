@@ -135,7 +135,98 @@ public class UserInterface {
 
 
     private void sortByProberty() {
+        System.out.println("Primære attribut til sortering: ");
+        System.out.println("1. Titel");
+        System.out.println("2. instruktør");
+        System.out.println("3. Udgivelsesår");
+        System.out.println("4. Længde");
+        System.out.println("5. Genre");
+        System.out.println("6. Farvefilm");
 
+        int primaryChoice = scanner.nextInt();
+
+        System.out.println("Sekundære attribut til sortering: ");
+        System.out.println("1. Titel");
+        System.out.println("2. instruktør");
+        System.out.println("3. Udgivelsesår");
+        System.out.println("4. Længde");
+        System.out.println("5. Genre");
+        System.out.println("6. Farvefilm");
+
+        int secondaryChoice = scanner.nextInt();
+
+        ArrayList <Movie> sortedMovies = new ArrayList<>(controller.getInstanceMovieCollection().getMovieCollection());
+
+        Comparator<Movie> primaryComparator=null;
+        switch (primaryChoice) {
+            case 1:
+                sortedMovies.sort(Comparator.comparing(Movie::getName));
+                break;
+            case 2:
+                sortedMovies.sort(Comparator.comparing(Movie::getDirector));
+                break;
+            case 3:
+                sortedMovies.sort(Comparator.comparing(Movie::getYear));
+                break;
+            case 4:
+                sortedMovies.sort(Comparator.comparing(Movie::getLenghtInMinutes));
+                break;
+            case 5:
+                sortedMovies.sort(Comparator.comparing(Movie::getGenre));
+                break;
+            case 6:
+                sortedMovies.sort(Comparator.comparing(Movie::isInColour));
+                break;
+
+        }
+        Comparator<Movie> secondaryComparator = null;
+        switch (secondaryChoice) {
+            case 1:
+                sortedMovies.sort(Comparator.comparing(Movie::getName));
+                break;
+            case 2:
+                sortedMovies.sort(Comparator.comparing(Movie::getDirector));
+                break;
+            case 3:
+                sortedMovies.sort(Comparator.comparing(Movie::getYear));
+                break;
+            case 4:
+                sortedMovies.sort(Comparator.comparing(Movie::getLenghtInMinutes));
+                break;
+            case 5:
+                sortedMovies.sort(Comparator.comparing(Movie::getGenre));
+                break;
+            case 6:
+                sortedMovies.sort(Comparator.comparing(Movie::isInColour));
+                break;
+        }
+
+        if (primaryComparator != null && secondaryComparator !=null) {
+            Comparator<Movie> combinedComparator = primaryComparator.thenComparing(secondaryComparator);
+            sortedMovies.sort(combinedComparator);
+
+        } else if (primaryComparator != null) {
+            sortedMovies.sort(primaryComparator);
+
+        }
+
+
+        System.out.println("\nSorterede film:");
+        System.out.println();
+        for (Movie movie : sortedMovies) {
+            System.out.println(movie);
+            System.out.println();
+        }
+
+
+
+
+
+
+
+
+
+/* userstory 13
         System.out.println("Hvordan skal filmen sorteres: ");
         System.out.println("1. Titel");
         System.out.println("2. instruktør");
@@ -145,7 +236,7 @@ public class UserInterface {
         System.out.println("6. Farvefilm");
 
         int sortChoice = scanner.nextInt();
-        ArrayList <Movie> sortedMovies = new ArrayList<>(film.getInstanceMovieCollection().getMovieCollection());
+        ArrayList <Movie> sortedMovies = new ArrayList<>(controller.getInstanceMovieCollection().getMovieCollection());
 
         switch (sortChoice) {
             case 1:
@@ -170,9 +261,11 @@ public class UserInterface {
         }
 
         System.out.println("\nSorterede film:");
+        System.out.println();
         for (Movie movie : sortedMovies) {
             System.out.println(movie);
-        }
+            System.out.println();
+        }*/
 
     }
 }
