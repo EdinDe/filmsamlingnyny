@@ -1,6 +1,14 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 
 
 public class MovieCollection {
@@ -14,11 +22,64 @@ public class MovieCollection {
     public MovieCollection() {
         this.movieCollection = new ArrayList<>();
     }
+    public void saveMovieList() throws IOException {
+        File file = new File("filmliste.csv");
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        // Write CSV header
+        bw.write("name, director, year, length In Minutes, genre, isInColour");
+        bw.newLine();
+
+        // Write each movie to the CSV file
+        for (Movie movie : movieCollection) {
+            bw.write(String.format("%s, %s, %d, %d, %s, %b",
+                    movie.getName(), movie.getDirector(), movie.getYear(), movie.getLenghtInMinutes(), movie.getGenre(), movie.isInColour()));
+            bw.newLine();
+        }
+
+        // Close BufferedWriter and FileWriter
+        bw.close();
+        fw.close();
+
+        System.out.println("Movies saved to filmliste.csv");
+    }
 
     public void addMovie(String name, String director, int year, int lenghtInMinutes, String genre, boolean isInColour) {
         movieCollection.add(new Movie(name, director, year, lenghtInMinutes, genre, isInColour));
-        filehandler.saveMovieList(movieCollection);
+
     }
+
+
+    /*private void loadListOfNames() {
+        String array[] = new String[movieCollection.size()];// ArrayList to String Array conversion
+        for(int j =0;j<movieCollection.size();j++){
+            array[j] = String.valueOf(movieCollection.get(j));
+        }
+
+
+        System.out.println("""
+                Enter names
+                -----------
+                Enter each name you want to add to the list. End by entering an empty name.
+                """);
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new File("filmliste.csv"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        String name = "-nothing yet-";
+        while(!name.isBlank() && sc.hasNextLine()) {
+            name = sc.nextLine();
+            if(!name.isBlank()) {
+                toString(name);
+                System.out.println("List has been loaded!");
+            }
+        }
+        System.out.println("Done");
+
+    }*/
 
     public ArrayList<String> listOfMovieTitles() {
         ArrayList<String> localListOfMovieTitles = new ArrayList<>();

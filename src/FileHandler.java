@@ -1,6 +1,5 @@
+import java.io.*;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 import java.util.Scanner;
 
@@ -40,6 +39,7 @@ public class FileHandler {
 
     }
 
-    public void saveMovieList(ArrayList<Movie> movieCollection) {
-    }
+
+
+
 }

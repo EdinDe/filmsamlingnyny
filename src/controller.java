@@ -42,7 +42,7 @@ public class controller {
             movieToEdit.setName(newName);
             movieToEdit.setDirector(newDirector);
             movieToEdit.setInColor(newIsInColor);
-            movieToEdit.setLengthInMinutes(Integer.parseInt(newLengthInMinutes));
+            movieToEdit.setLenghtInMinutes(Integer.parseInt(newLengthInMinutes));
             movieToEdit.setYear(Integer.parseInt(newYear));
             movieToEdit.setGenre(newGenre);
         } else {

@@ -1,11 +1,14 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-import java.io.PrintStream;
-
 public class UserInterface {
     controller film = new controller();
+    FileHandler fh = new FileHandler();
+    MovieCollection  mc = new MovieCollection();
 
 
     Scanner scanner = new Scanner(System.in);
@@ -25,8 +28,12 @@ public class UserInterface {
             System.out.println("2. Afslut");
             System.out.println("3. Vis min filmsamling");
             System.out.println("4. Søg efter en film");
-            System.out.println("5. Rediger film");
-            System.out.println("6. Sorter film\n");
+            System.out.println("5. Load film liste");
+            System.out.println("6. Sorter film");
+            System.out.println("7. Rediger film");
+            System.out.println("8. Gem nuværende film liste");
+            System.out.println("9. Afslut program");
+
 
             tal = scanner.nextInt();
             scanner.nextLine();
@@ -40,11 +47,26 @@ public class UserInterface {
                 System.out.println(controller.instanceMovieCollection.showMovieCollectionSortedByTitle());
             } else if (tal == 4) {
                 searchMovie();
-            } else if (tal==5) {
-                editMovie();
-            } else if (tal==6) {
+            } else if (tal==5){
+                fh.loadMovieList();
+            }else if (tal==6){
                 sortByProberty();
+
+
+            }else if (tal==7) {
+                editMovie();
+            }else if (tal==8) {
+                try {
+                    // Call the saveMovieList method to save the movieCollection to a CSV file
+                mc.saveMovieList();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }else if(tal==9){
+                break;
             }
+
         }
     }
 
