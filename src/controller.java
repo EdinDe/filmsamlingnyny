@@ -19,7 +19,7 @@ public class controller {
 
     }
 
-    public MovieCollection getInstanceMovieCollection() {
+    public static MovieCollection getInstanceMovieCollection() {
         return instanceMovieCollection;
     }
 

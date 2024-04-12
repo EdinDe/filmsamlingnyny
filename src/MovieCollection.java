@@ -7,7 +7,8 @@ public class MovieCollection {
 
     private FileHandler filehandler = new FileHandler();
 
-    private ArrayList<Movie> movieCollection;
+    public ArrayList<Movie> movieCollection;
+
 
 
     public MovieCollection() {
@@ -66,5 +67,9 @@ public class MovieCollection {
         sortMoviesByTitle();
         return showMovieCollection();
 
+    }
+
+    public ArrayList<Movie> getMovieCollection(){
+        return movieCollection;
     }
 }

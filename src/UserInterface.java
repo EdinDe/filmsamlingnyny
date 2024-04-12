@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 import java.io.PrintStream;
 
@@ -26,7 +25,8 @@ public class UserInterface {
             System.out.println("2. Afslut");
             System.out.println("3. Vis min filmsamling");
             System.out.println("4. Søg efter en film");
-            System.out.println("5. Rediger film\n");
+            System.out.println("5. Rediger film");
+            System.out.println("6. Sorter film\n");
 
             tal = scanner.nextInt();
             scanner.nextLine();
@@ -42,7 +42,8 @@ public class UserInterface {
                 searchMovie();
             } else if (tal==5) {
                 editMovie();
-                
+            } else if (tal==6) {
+                sortByProberty();
             }
         }
     }
@@ -133,4 +134,45 @@ public class UserInterface {
     }
 
 
+    private void sortByProberty() {
+
+        System.out.println("Hvordan skal filmen sorteres: ");
+        System.out.println("1. Titel");
+        System.out.println("2. instruktør");
+        System.out.println("3. Udgivelsesår");
+        System.out.println("4. Længde");
+        System.out.println("5. Genre");
+        System.out.println("6. Farvefilm");
+
+        int sortChoice = scanner.nextInt();
+        ArrayList <Movie> sortedMovies = new ArrayList<>(film.getInstanceMovieCollection().getMovieCollection());
+
+        switch (sortChoice) {
+            case 1:
+                sortedMovies.sort(Comparator.comparing(Movie::getName));
+                break;
+            case 2:
+                sortedMovies.sort(Comparator.comparing(Movie::getDirector));
+                break;
+            case 3:
+                sortedMovies.sort(Comparator.comparing(Movie::getYear));
+                break;
+            case 4:
+                sortedMovies.sort(Comparator.comparing(Movie::getLenghtInMinutes));
+                break;
+            case 5:
+                sortedMovies.sort(Comparator.comparing(Movie::getGenre));
+                break;
+            case 6:
+                sortedMovies.sort(Comparator.comparing(Movie::isInColour));
+                break;
+
+        }
+
+        System.out.println("\nSorterede film:");
+        for (Movie movie : sortedMovies) {
+            System.out.println(movie);
+        }
+
+    }
 }
