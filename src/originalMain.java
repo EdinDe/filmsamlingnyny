@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        controller film = new controller();
+        controller.java film = new controller.java();
         Scanner scanner = new Scanner(System.in);
         int sentinel = 2;
         int tal = 0;
